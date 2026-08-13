@@ -5,8 +5,8 @@ class Produto:
     def __init__(self, nome, preco):
         self.nome = nome
         self.preco = preco
-    def mostrar():
-        print(f"Produto: {self.nome}|Preço: {self.preco}")
+    def mostrar(self):
+        print(f"Produto: {self.nome} |  Preço: {self.preco}")
         
 def cadProd():
     nomeProd = input("Insira o nome do produto: ")
@@ -24,7 +24,8 @@ def cadProd():
     
 def listarProds():
     for produto in listProd:
-        print(f"Índice: {listProd.index(produto)}\nProduto: {produto.nome}\nPreço: {produto.preco}")
+        print(f"Índice: {listProd.index(produto)}")
+        produto.mostrar()
         
 def comprarProd():
     while True:
@@ -43,7 +44,7 @@ def comprarProd():
             print("Valor inválido! Digite um valor inteiro")
     pPreco = p.preco
     valorTotal = pPreco * qtd
-    print(f"O valor total a pagar será :{valorTotal}")
+    print(f"O valor total a pagar será: {valorTotal}")
     if valorTotal >= 100:
         print("Desconto disponível!")
     else:
@@ -60,6 +61,8 @@ while True:
         comprarProd()
     elif escolha == "3":
         listarProds()
-    else:
+    elif escolha == "4":
         encerrarPrograma()
         break
+    else:
+        print("Digite uma das opções válidas")

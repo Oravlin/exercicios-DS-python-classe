@@ -29,10 +29,12 @@ def listarProds():
 def comprarProd():
     while True:
         try:
-            p = listProd[input("Insira o índice do produto: ")]
+            p = listProd[int(input("Insira o índice do produto: "))]
             break
         except IndexError:
             print("Índice inválido! Insira um índice que exista! (lembre-se: o índice sempre começa pelo 0!)")
+        except ValueError:
+            print("Valor inválido! Insira um valor numérico válido!")
     while True:
         try:
             qtd = int(input("Insira a quantidade que deseja pagar: "))
@@ -40,4 +42,24 @@ def comprarProd():
         except ValueError:
             print("Valor inválido! Digite um valor inteiro")
     pPreco = p.preco
-    if 
+    valorTotal = pPreco * qtd
+    print(f"O valor total a pagar será :{valorTotal}")
+    if valorTotal >= 100:
+        print("Desconto disponível!")
+    else:
+        print("Desconto indisponível!")
+    
+def encerrarPrograma():
+    print("Encerrando programa...")
+
+while True:
+    escolha = input("o que deseja fazer? 1 para cadastrar produtos|2 para comprar produtos|3 para listar produtos|4 para encerrar programa: ")
+    if escolha == "1":
+        cadProd()
+    elif escolha == "2":
+        comprarProd()
+    elif escolha == "3":
+        listarProds()
+    else:
+        encerrarPrograma()
+        break
